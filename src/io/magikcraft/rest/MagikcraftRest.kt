@@ -9,6 +9,8 @@ import java.util.logging.Level
 @Suppress("unused")
 class MagikcraftRest() : JavaPlugin() {
     private lateinit var httpd: Httpd
+    private val apiKeyEnvVarName: String = "MINECRAFT_REST_CONSOLE_API_KEY"
+    private val portEnvVarName: String = "MINECRAFT_REST_CONSOLE_PORT"
 
     /**
      * This is a singleton, but we have to use a Kotlin class because it is managed by Bukkit.
@@ -21,8 +23,8 @@ class MagikcraftRest() : JavaPlugin() {
 
     override fun onEnable() {
         instance = this
-        val key = System.getenv("MAGIKCRAFT_HTTPD_API_KEY")
-        val configuredPort = System.getenv("MAGIKCRAFT_HTTPD_PORT")
+        val key = System.getenv(apiKeyEnvVarName)
+        val configuredPort = System.getenv(portEnvVarName)
         var port: Int
         try {
             if (configuredPort != null) port = configuredPort.toInt()
@@ -32,8 +34,8 @@ class MagikcraftRest() : JavaPlugin() {
         }
         httpd = Httpd(this, port, key)
         httpd.start()
-        logger.info("Magikcraft REST Console plugin enabled!")
-        logger.info("Magikcraft REST Console started on Port " + port)
+        logger.info("Minecraft REST Console plugin enabled!")
+        logger.info("Minecraft REST Console started on port " + port)
         if (key == null)
             logger.info("REST endpoint unsecured")
         else

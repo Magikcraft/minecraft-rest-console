@@ -3,11 +3,11 @@
 This Minecraft plugin provides a REST server that allows you to issue commands via REST to execute as the server console or as any online player.
 
 ## Configuration
-The port is configurable via the environment. Set the environment variable `MAGIKCRAFT_HTTPD_PORT` to the port you want the server to run on.
+The port is configurable via the environment. Set the environment variable `MINECRAFT_REST_CONSOLE_PORT` to the port you want the server to run on.
 
-The default is port 8086 if no port is set.
+The default is port 8086, if no port is set.
 
-The endpoint can be secured with an API key. Set the environment variable `MAGIKCRAFT_HTTPD_API_KEY` to the API key you with to use to secure the endpoint.
+The endpoint can be secured with an API key. Set the environment variable `MINECRAFT_REST_CONSOLE_API_KEY` to the API key you with to use to secure the endpoint.
 
 The default is to run the endpoint unsecured.
 
@@ -62,9 +62,9 @@ http://localhost:8086/sendMessageToPlayer?player=sitapati&message=this%20is%20th
 
 ## Responses
 
-When the endpoint is secured, if you are not authorised with the correct API Key, you will get a 403 Forbidden response.
+When the endpoint is secured, if you are not authorised with the correct API Key, you will get a `403` Forbidden response.
 
-If the endpoint is not secured, or you have the correct API key, the response is always a HTTP Status code 200.
+If the endpoint is not secured, or you have the correct API key, the response is always a HTTP Status code `200`.
 
 It will be a JSON object with an `ok` field. This will be `true` if the request processed ok, and `false` if it did not. 
 
