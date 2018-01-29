@@ -7,7 +7,7 @@ import java.net.URLDecoder
 import java.util.logging.Level
 
 @Suppress("unused")
-class MagikcraftRest() : JavaPlugin() {
+class MinecraftRestConsole() : JavaPlugin() {
     private lateinit var httpd: Httpd
     private val apiKeyEnvVarName: String = "MINECRAFT_REST_CONSOLE_API_KEY"
     private val portEnvVarName: String = "MINECRAFT_REST_CONSOLE_PORT"
@@ -17,7 +17,7 @@ class MagikcraftRest() : JavaPlugin() {
      * So we use a companion object to enforce the singleton pattern.
      */
     companion object {
-        var instance: MagikcraftRest? = null
+        var instance: MinecraftRestConsole? = null
             private set
     }
 
@@ -54,7 +54,7 @@ class MagikcraftRest() : JavaPlugin() {
         server.broadcastMessage(msg)
     }
 
-    private class Httpd(plugin: MagikcraftRest, port: Int, key: String?) : NanoHTTPD(port) {
+    private class Httpd(plugin: MinecraftRestConsole, port: Int, key: String?) : NanoHTTPD(port) {
 
         private val plugin = plugin
         private val logger = plugin.logger

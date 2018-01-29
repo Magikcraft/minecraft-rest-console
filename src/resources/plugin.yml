@@ -1,3 +1,3 @@
-name: "MagikcraftRest"
-main: io.magikcraft.rest.MagikcraftRest
+name: "MinecraftRESTConsole"
+main: io.magikcraft.rest.MinecraftRestConsole
 version: ${project.version}

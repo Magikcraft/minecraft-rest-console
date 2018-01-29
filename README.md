@@ -1,8 +1,9 @@
-# Magikcraft Rest Console
+# Minecraft REST Console
 
-This Minecraft plugin provides a REST server that allows you to issue commands via REST to execute as the server console or as any online player.
+This Minecraft plugin provides a REST server - based on NanoHTTPd - that allows you to issue commands via REST to execute as the server console or as any online player.
 
 ## Configuration
+
 The port is configurable via the environment. Set the environment variable `MINECRAFT_REST_CONSOLE_PORT` to the port you want the server to run on.
 
 The default is port 8086, if no port is set.

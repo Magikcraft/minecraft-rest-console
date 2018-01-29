@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.magikcraft.rest</groupId>
-  <artifactId>Magikcraft-RestConsole</artifactId>
+  <artifactId>MinecraftRestConsole</artifactId>
   <name>io.magikcraft.rest</name>
-  <version>0.1</version>
+  <version>1.0</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <extensions>
@@ -33,7 +33,17 @@
               <goal>compile</goal>
             </goals>
           </execution>
+          <execution>
+            <id>test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>test-compile</goal>
+            </goals>
+          </execution>
         </executions>
+        <configuration>
+          <jvmTarget>1.8</jvmTarget>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -52,6 +62,13 @@
             <phase>compile</phase>
             <goals>
               <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>testCompile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
             </goals>
           </execution>
         </executions>
@@ -92,12 +109,6 @@
       <artifactId>kotlin-test-junit</artifactId>
       <version>1.2.21</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>kotlin-test</artifactId>
-          <groupId>org.jetbrains.kotlin</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -142,6 +153,12 @@
           <groupId>org.yaml</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-test</artifactId>
+      <version>1.2.21</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <properties>
