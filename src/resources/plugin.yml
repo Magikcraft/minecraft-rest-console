@@ -1,0 +1,3 @@
+name: "MagikcraftRest"
+main: io.magikcraft.rest.MagikcraftRest
+version: ${project.version}
