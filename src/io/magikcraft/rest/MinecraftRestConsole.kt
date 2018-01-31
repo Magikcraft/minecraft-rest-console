@@ -61,6 +61,9 @@ class MinecraftRestConsole() : JavaPlugin() {
         private val port = port
         private val API_KEY = key
 
+        private fun log (msg: String) {
+            logger.info(msg);
+        }
         private fun isAuthorised(session: IHTTPSession): Boolean {
             return (API_KEY == null || API_KEY == getParameter("apikey", session, ""))
         }
@@ -153,11 +156,11 @@ class MinecraftRestConsole() : JavaPlugin() {
             }
             val playerName = getParameter("player", session, "server")
             val command = getParameter("command", session)
+            log("$playerName remote executes $command");
             if ("server".equals(playerName, ignoreCase = true)) { // Run as server
                 val sender = plugin.getServer().getConsoleSender()
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, { plugin.getServer().dispatchCommand(sender, command) }, 1)
                 return OK("Command scheduled for execution")
-
             } else {
                 val sender = plugin.getServer().getPlayer(playerName)
                 plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, { plugin.getServer().dispatchCommand(sender, command) }, 1)
