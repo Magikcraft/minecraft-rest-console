@@ -139,6 +139,7 @@ class MinecraftRestConsole() : JavaPlugin() {
                     "remoteExecuteCommand" -> return remoteExecuteCommand(session, args)
                     "sendMessageToPlayer" -> return sendMessageToPlayer(session, args)
                     "echo" -> return echo(session, args)
+                    "getOnlinePlayers" -> return getOnlinePlayers(session, args)
                 }
             }
             return _404()
@@ -181,5 +182,15 @@ class MinecraftRestConsole() : JavaPlugin() {
             }
         }
 
+
+        fun getOnlinePlayers(session: IHTTPSession, args: Array<String>): NanoHTTPD.Response {
+            if (!isAuthorised(session)) {
+                return _403()
+            }
+            var playerMap = mutableMapOf<String, List<String>>();
+            val players = plugin.server.onlinePlayers.map{ it.name }
+            playerMap.put("players", players)
+            return OK(JSONObject(playerMap))
+        }
     }
 }
