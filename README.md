@@ -61,6 +61,13 @@ With an API key:
 http://localhost:8086/sendMessageToPlayer?player=sitapati&message=this%20is%20the%20message&apikey=13242345jkldsf*
 ```
 
+### getOnlinePlayers
+
+Returns a JSON object with an array of online players:
+
+```javascript
+{ players: ["sitapati", "triyuga"] }
+```
 ## Responses
 
 When the endpoint is secured, if you are not authorised with the correct API Key, you will get a `403` Forbidden response.
