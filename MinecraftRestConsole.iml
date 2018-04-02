@@ -43,5 +43,15 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jetbrains.kotlin:kotlin-test:1.2.21" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: io.magikcraft.scriptcraft-multi-engine:Scriptcraft-ME:2.10">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/src/resources/Scriptcraft-ME-2.9.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <LIBRARY_FILE />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

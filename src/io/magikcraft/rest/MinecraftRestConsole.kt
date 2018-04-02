@@ -1,6 +1,8 @@
 package io.magikcraft.rest
 
+import io.magikcraft.minecraft.ScriptcraftMultiEnginePlugin
 import org.apache.commons.lang.StringUtils
+import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import org.json.simple.JSONObject
 import java.net.URLDecoder
@@ -125,6 +127,12 @@ class MinecraftRestConsole() : JavaPlugin() {
             plugin.sendMessageTo(playerName, msg)
         }
 
+        private fun getEngineMode(session: IHTTPSession, args: Array<String>): NanoHTTPD.Response {
+            var ScriptcraftME: Plugin? = this.plugin.server.pluginManager.getPlugin("Scriptcraft-ME") ?: return OK("single")
+            val mode = (ScriptcraftME as ScriptcraftMultiEnginePlugin).getEngineMode()
+            return OK(mode)
+        }
+
         private fun messageDataToPlayers(session: IHTTPSession) {
             val msg = getParameter("data", session)
             println("Message to all players: " + msg)
@@ -140,6 +148,7 @@ class MinecraftRestConsole() : JavaPlugin() {
                     "sendMessageToPlayer" -> return sendMessageToPlayer(session, args)
                     "echo" -> return echo(session, args)
                     "getOnlinePlayers" -> return getOnlinePlayers(session, args)
+                    "getEngineMode" -> return getEngineMode(session, args)
                 }
             }
             return _404()
