@@ -48,6 +48,13 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.magikcraft.scriptcraft-multi-engine</groupId>
+            <artifactId>Scriptcraft-ME</artifactId>
+            <version>2.10</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/resources/Scriptcraft-ME-2.9.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
