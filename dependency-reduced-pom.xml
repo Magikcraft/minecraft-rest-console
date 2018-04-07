@@ -4,7 +4,7 @@
   <groupId>io.magikcraft.rest</groupId>
   <artifactId>MinecraftRestConsole</artifactId>
   <name>io.magikcraft.rest</name>
-  <version>1.2</version>
+  <version>1.4</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <extensions>
@@ -107,7 +107,7 @@
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test-junit</artifactId>
-      <version>1.2.21</version>
+      <version>1.2.31</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -157,7 +157,7 @@
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test</artifactId>
-      <version>1.2.21</version>
+      <version>1.2.31</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -165,7 +165,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <kotlin.version>1.2.21</kotlin.version>
+    <kotlin.version>1.2.31</kotlin.version>
     <junit.version>4.12</junit.version>
   </properties>
 </project>
