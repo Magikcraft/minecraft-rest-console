@@ -61,7 +61,7 @@ class Httpd(plugin: MinecraftRestConsole, port: Int, key: String?) : NanoHTTPD(p
     }
 
     private fun getEngineMode(session: IHTTPSession, args: Array<String>): NanoHTTPD.Response {
-        if (MinecraftRestConsole.instance!!.singleEngineMode) {
+        if (plugin.singleEngineMode) {
             return HttpResponse.OK("single")
         } else {
             return HttpResponse.OK("multi")
