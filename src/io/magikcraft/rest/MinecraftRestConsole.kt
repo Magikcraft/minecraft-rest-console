@@ -7,7 +7,6 @@ class MinecraftRestConsole() : JavaPlugin() {
     private lateinit var httpd: Httpd
     private val apiKeyEnvVarName: String = "MINECRAFT_REST_CONSOLE_API_KEY"
     private val portEnvVarName: String = "MINECRAFT_REST_CONSOLE_PORT"
-    val singleEngineMode = java.lang.System.getenv("SINGLE_ENGINE_MODE") == "true"
 
     /**
      * This is a singleton, but we have to use a Kotlin class because it is managed by Bukkit.
@@ -17,6 +16,8 @@ class MinecraftRestConsole() : JavaPlugin() {
         var instance: MinecraftRestConsole? = null
             private set
     }
+
+    public var singleEngineMode: Boolean = java.lang.System.getenv("SINGLE_ENGINE_MODE") == "true"
 
     override fun onEnable() {
         instance = this
@@ -33,6 +34,11 @@ class MinecraftRestConsole() : JavaPlugin() {
         httpd.start()
         logger.info("Minecraft REST Console plugin enabled!")
         logger.info("Minecraft REST Console started on port " + port)
+        if (this.singleEngineMode) {
+            logger.info("Running in Single Engine mode")
+        } else {
+            logger.info("Running in Multi-engine mode")
+        }
         if (key == null)
             logger.info("REST endpoint unsecured")
         else
@@ -50,6 +56,4 @@ class MinecraftRestConsole() : JavaPlugin() {
     fun broadcastMessage(msg: String) {
         server.broadcastMessage(msg)
     }
-
-
 }
