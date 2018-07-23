@@ -23,13 +23,13 @@ It will respond with the message that you send, and also log the message out to 
 The following route will work with the default configuration (unsecured, port 8086) endpoint:
 
 ```bash
-http://localhost:8086/echo?message=this%20is%20the%20message
+http://localhost:8086/echo?msg=this%20is%20the%20message
 ```
 
 With an API key, the request would look like this:
 
 ```bash
-http://localhost:8086/echo?message=this%20is%20the%20message&apikey=MySuperSecretKey1001
+http://localhost:8086/echo?msg=this%20is%20the%20message&apikey=MySuperSecretKey1001
 ```
 
 ### remoteExecuteCommand
