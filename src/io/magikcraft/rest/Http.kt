@@ -87,15 +87,12 @@ class Httpd(plugin: MinecraftRestConsole, port: Int, key: String?) : NanoHTTPD(p
         val playerName = getParameter("player", session, "server")
         val command = getParameter("command", session)
         log("$playerName remote executes $command");
-        if ("server".equals(playerName, ignoreCase = true)) { // Run as server
-            val sender = plugin.getServer().getConsoleSender()
-            plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, { plugin.getServer().dispatchCommand(sender, command) }, 1)
-            return HttpResponse.OK("Command scheduled for execution")
-        } else {
-            val sender = plugin.getServer().getPlayer(playerName)
-            plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, { plugin.getServer().dispatchCommand(sender, command) }, 1)
-            return HttpResponse.OK("Command returned true")
+        val sender = plugin.getServer().getConsoleSender()
+        val server = plugin.server
+        server.scheduler.callSyncMethod( plugin) {
+            server.dispatchCommand(sender,command)
         }
+        return HttpResponse.OK("Command executed")
     }
 
     private fun sendMessageToPlayer(session: IHTTPSession, args: Array<String>): NanoHTTPD.Response {
@@ -107,7 +104,7 @@ class Httpd(plugin: MinecraftRestConsole, port: Int, key: String?) : NanoHTTPD(p
             HttpResponse.OK("Message sent")
         } else {
             logger.log(Level.INFO, "Send message $msg to player $playerName failed. Player not found.")
-            HttpResponse.notOK("Sending message failed - Player $playerName not found.")
+            HttpResponse.OK("Sending message failed - Player $playerName not found.")
         }
     }
 
