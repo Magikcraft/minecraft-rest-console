@@ -89,10 +89,11 @@ class Httpd(plugin: MinecraftRestConsole, port: Int, key: String?) : NanoHTTPD(p
         log("$playerName remote executes $command");
         val sender = plugin.getServer().getConsoleSender()
         val server = plugin.server
+        // Close the HTTP connection first in case the command throws.
+        return HttpResponse.OK("Command executed")
         server.scheduler.callSyncMethod( plugin) {
             server.dispatchCommand(sender,command)
         }
-        return HttpResponse.OK("Command executed")
     }
 
     private fun sendMessageToPlayer(session: IHTTPSession, args: Array<String>): NanoHTTPD.Response {
