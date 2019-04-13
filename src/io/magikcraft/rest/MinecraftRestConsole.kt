@@ -1,6 +1,8 @@
 package io.magikcraft.rest
 
 import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.entity.Player
+
 
 @Suppress("unused")
 class MinecraftRestConsole() : JavaPlugin() {
@@ -34,11 +36,11 @@ class MinecraftRestConsole() : JavaPlugin() {
         httpd.start()
         logger.info("Minecraft REST Console plugin enabled!")
         logger.info("Minecraft REST Console started on port " + port)
-        if (this.singleEngineMode) {
-            logger.info("Running in Single Engine mode")
-        } else {
-            logger.info("Running in Multi-engine mode")
-        }
+//        if (this.singleEngineMode) {
+//            logger.info("Running in Single Engine mode")
+//        } else {
+//            logger.info("Running in Multi-engine mode")
+//        }
         if (key == null)
             logger.info("REST endpoint unsecured")
         else
@@ -46,8 +48,9 @@ class MinecraftRestConsole() : JavaPlugin() {
     }
 
     fun sendMessageTo(playerName: String, msg: String): Boolean {
-        if (server.getPlayer(playerName) != null) {
-            server.getPlayer(playerName).sendMessage(msg)
+        val player: Player? = server.getPlayer(playerName)
+        if (player != null) {
+            player.sendMessage(msg)
             return true
         }
         return false
