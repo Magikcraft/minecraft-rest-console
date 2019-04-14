@@ -51,14 +51,14 @@ http://localhost:8086/remoteExecuteCommand?player=server&command=js%20refresh()&
 You can send a message to an online player:
 
 ```bash
-http://localhost:8086/sendMessageToPlayer?player=sitapati&message=this%20is%20the%20message
+http://localhost:8086/sendMessageToPlayer?player=sitapati&msg=this%20is%20the%20message
 ```
 
 With an API key:
 
 
 ```bash
-http://localhost:8086/sendMessageToPlayer?player=sitapati&message=this%20is%20the%20message&apikey=13242345jkldsf*
+http://localhost:8086/sendMessageToPlayer?player=sitapati&msg=this%20is%20the%20message&apikey=13242345jkldsf*
 ```
 
 ### getOnlinePlayers
